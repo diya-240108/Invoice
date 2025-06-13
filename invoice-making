@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>My Invoice</title>
+    <style>
+        .invoice-header {
+            width: 800px;
+            border-radius: 100px;
+            background-color: #80003c;
+            color: wheat;
+            align-items: center;
+            justify-content: center;
+            border: 4px solid #000000;
+            margin: 20px auto;
+            font-size: medium;
+            text-indent: 150px;
+        }
+
+        .invoice-logo img {
+            position: absolute;
+            top: 40px;
+            left: 20px;
+            width: 100px;
+            height: 100px;
+            filter: drop-shadow(0 0 8px gold);
+        }
+
+        .invoice-info {
+            width: 350px;
+            margin: 30px 20px 30px auto;
+            padding: 20px;
+            border-radius: 20px;
+            background: rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            color: #333;
+            text-align: center;
+            font-weight: bold;
+            justify-content: flex-end;
+        }
+
+        .invoice-table {
+            width: 90%;
+            margin: auto;
+            border-collapse: separate;
+            border-spacing: 0;
+            background-color: #fff;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .invoice-table th {
+            background-color: #800020;
+            color: white;
+            padding: 12px;
+            font-size: 16px;
+        }
+
+        .invoice-table td {
+            padding: 14px;
+            text-align: center;
+            vertical-align: middle;
+            font-size: 15px;
+        }
+
+        .total-row {
+            background-color: #fbe4f0;
+            font-weight: bold;
+        }
+
+        .total-badge {
+            background-color: #800020;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+        .summary-price-tag {
+            top: 0px;
+            left:200px;
+            width: 300px;
+            height: 180px;
+            margin: 30px auto;
+            background: linear-gradient(135deg, #800020, #b3003c);
+            color: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            font-family: 'Segoe UI', sans-serif;
+            position: relative;
+            padding: 20px 25px 25px 25px;
+        }
+        .tag-title {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: gold;
+            color: black;
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 18px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .price-details p {
+            margin: 10px 0;
+            font-size: 15px;
+        }
+        .total-price {
+            background-color: #fff;
+            color: #800020;
+            padding: 10px;
+            text-align: center;
+            border-radius: 8px;
+            font-size: 17px;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        .invoice-contact {
+            background-color: #263238;
+            color: antiquewhite;
+        }
+        .payment-sticky-note {
+            top:1420px;
+            left:200px;
+            width: 350px;
+            height:180px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #fff8b5;
+            color: #333;
+            border: 1px solid #e6c200;
+            border-radius: 10px;
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 15px;
+            position: absolute;
+            box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .payment-sticky-note::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-bottom: 40px solid #d4c000;
+            border-left: 40px solid transparent;
+            border-radius: 0 0 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <!--Title-->
+    <div class="invoice-logo">
+        <img src="agd animated 2.png" width="150 px" height="80" style="float:right; margin-left: 280px;"
+            class="logo-animate">
+    </div>
+    <div class="invoice-header">
+        <h1><b></b>INVOICE-AGD COMPANY</b></h1>
+        <p><b>INVOICE NO:</b><b><i>1209</i></b></p>
+        <p><b><i>24th December,2021</i></b></p>
+    </div>
+    <!--Client info-->
+    <div class="invoice-info">
+        <h2><b>INVOICE TO:</b></h2>
+        <h3><b>Name🙎‍♀️:</b><i>Mrs.Akila</i></h3>
+        <h3><b>Email📧:</b><i>dp2412@gmail.com</i>
+            <h3>
+                <h3><b>Address🏠:</b><i>10th Avenue,Chennai,600078</i></h3>
+    </div>
+    <center>
+        <form>
+            <!--Table creation-->
+            <table class="invoice-table" id="details">
+                <h2><b><u>PRODUCT DETAILS</u></b></h2>
+                <tr>
+                    <th>S.NO</th>
+                    <th>PRODUCT</th>
+                    <th>DESCRIPTION</th>
+                    <th>PRICE(₹)</th>
+                    <th>QUANTITY</th>
+                    <th>TOTAL PRICE(₹)</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td class="invoice-table">
+                        <img src="mouse.jpeg" alt="Product 1" width="150px" height="100px">
+                        <center><span class="product-name">Wireless Mouse</span></center>
+                    </td>
+                    <td>Comfort grip, Bluetooth enabled</td>
+                    <td>500</td>
+                    <td>2</td>
+                    <td>1000</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td class="invoice-table">
+                        <img src="headphone.jpeg" alt="Product 2" width="150px" height="100px">
+                        <center><span class="product-name">Headphones</span></center>
+                    </td>
+                    <td>Over-ear, noise cancelling</td>
+                    <td>1500</td>
+                    <td>1</td>
+                    <td>1500</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td class="invoice-table">
+                        <img src="usb.jpeg" alt="Product 3" width="150px" height="100px">
+                        <center><span class="product-name">USB-C Charger</span></center>
+                    </td>
+                    <td>Fast charging 45W</td>
+                    <td>800</td>
+                    <td>3</td>
+                    <td>2400</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td class="invoice-table">
+                        <img src="smartwatch.jpeg" alt="Product 4" width="150px" height="100px">
+                        <center><span class="product-name">Smartwatch</span></center>
+                    </td>
+                    <td>Fitness tracking, water-resistant</td>
+                    <td>2500</td>
+                    <td>1</td>
+                    <td>2500</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td class="invoice-table">
+                        <img src="speaker.jpeg" alt="Product 5" width="150px" height="150px">
+                        <center><span class="product-name">Portable Speaker</span></center>
+                    </td>
+                    <td>Bluetooth, 10hr battery life</td>
+                    <td>1200</td>
+                    <td>2</td>
+                    <td>2400</td>
+                </tr>
+                <tr class="total-row">
+                    <td colspan="5" style="text-align: right;">Total Cost:</td>
+                    <td><span class="total-badge">₹9800</span></td>
+                </tr>
+            </table>
+        </form>
+    </center>
+    <!-- Total Summary Card -->
+        <div class="summary-price-tag">
+            <div class="tag-title">SUMMARY</div>
+            <div class="price-details">
+                <p><strong>Subtotal :</strong> ₹9,800</p>
+                <p><strong>Tax (18%) :</strong> ₹1,764</p>
+                <hr>
+                <p class="total-price"><strong>Total:</strong> ₹11,564</p>
+                <p><strong>Payment can be made via cash 💸or a debit/credit card💳!</strong></p>
+            </div>
+        </div>
+        <!--Payment details-->
+        <div class="payment-sticky-note">
+            <h3>💳 Payment Info</h3>
+            <img src="fake qr.png" Width="120px" height="120" style="float:right;margin-right: 0px;">
+            <p><strong>Bank:</strong> AGD National Bank</p>
+            <p><strong>Account No:</strong> 1234567890</p>
+            <p><strong>IFSC:</strong> AGDB0001234</p>
+            <p><strong>UPI ID:</strong> agdcompany@upi</p>
+        </div>
+    <!--Contact information-->
+    <center>
+        <div class="invoice-contact">
+            <h2>Thank You!</h2>
+            <h2><u>CONTACT</u></h2>
+            <h3>☎️+91 9876543210|📧prathi3012@gmail.com</h3>
+            <h3>9th street Avenue park,Chennai,600085</h3>
+        </div>
+    </center>
+</body>
+</html>
